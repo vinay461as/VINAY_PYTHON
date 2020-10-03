@@ -1,0 +1,24 @@
+{% for router in routers %}
+  <tr>
+    <td>{{ router.sapid }}</td>
+    <td>{{ router.hostname }}</td>
+    <td>{{ router.loopback }}</td>
+    <td>{{ router.mac_address }}</td>
+    <td style="width: 150px">
+      <button type="button"
+              class="btn btn-warning btn-sm js-update-router"
+              data-url="{% url 'router_update' router.id %}">
+        <span class="glyphicon glyphicon-pencil"></span> Edit
+      </button>
+      <button type="button"
+              class="btn btn-danger btn-sm js-delete-router"
+              data-url="{% url 'router_delete' router.id %}">
+        <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+    </td>
+  </tr>
+{% empty %}
+  <tr>
+    <td colspan="8" class="text-center bg-warning">No Router</td>
+  </tr>
+{% endfor %}

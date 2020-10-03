@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block javascript %}
+  <script src="{% static 'routers/js/routers.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+  <h1 class="page-header">Routers</h1>
+
+  <p>
+    <button type="button" class="btn btn-primary js-create-router" data-url="{% url 'router_create' %}">
+      <span class="glyphicon glyphicon-plus"></span>
+      New Router
+    </button>
+  </p>
+
+  <table class="table" id="router-table">
+    <thead>
+      <tr>
+        <th>Sapid</th>
+        <th>Hostname</th>
+        <th>Loopback</th>
+        <th>Mac Address</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% include 'routers/includes/partial_router_list.html' %}
+    </tbody>
+  </table>
+
+  <div class="modal fade" id="modal-router">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
